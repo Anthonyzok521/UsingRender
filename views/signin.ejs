@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <main>
+        <h1>Sign in</h1>
+        <section id="signin">
+            <form action="/" method="post">
+    
+              <div class="container-inputs-signin">
+                <label for="username">Username: </label>
+                <input type="text" name="username">
+    
+                <label for="email">Email: </label>
+                <input type="email" name="email">
+    
+                <div class="pass">
+                  <label for="password">Password: </label>
+                  <input type="password" name="password">
+    
+                  <label for="confirm">Confirm: </label>
+                  <input type="password" name="confirm">
+                  <div id="verify"></div>
+                </div>
+    
+                <label for="description">Description: </label>
+                <textarea name="description" cols="5" rows="5"></textarea>
+              </div>
+    
+              <input type="submit" id="button-send" value="Sign in">
+    
+            </form>
+          </section>
+    </main>
+</body>
+</html>

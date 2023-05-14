@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <main>
+      <h1>Log in</h1>
+      <div class="message"><div></div><p>Log in and access all our courses</p></div>
+
+      <section id="login">
+        <form action="/home" method="post">
+
+          <div class="container-inputs-login">
+            <label for="username">Username</label>
+            <input type="text" name="username">
+
+            <label for="password">Password</label>
+            <input type="password" name="password">
+          </div>
+
+          <input id="button-send" type="submit" value="Log in">
+
+        </form>
+      
+        <p class="signin-button"><a href="/signin">You do not have an account?</a></p>
+      </section>
+
+    </main>
+  </body>
+</html>
