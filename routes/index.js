@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://anthonyzok521:EMA7Q8uCChSNcAni@incriptionsdw.m729xdr.mongodb.net/?retryWrites=true&w=majority";
 
 // Usando el paquete SQLite 3 
 const sqlite3 = require('sqlite3').verbose();
@@ -12,6 +14,15 @@ const select_all = "SELECT * FROM users";
 //Para logear y tener los datos
 let login = false;
 let datas = []
+
+// Creando Base de datos en memoria 
+const db = new sqlite3.Database(':memory:', (err) => {
+  if (err) {
+      return console.error(err.message);
+  }
+  console.log('Ready!');
+  db.run(create_table);
+});
 
 /* GET home page. */
 router.get('/', (req, res)=>{
@@ -108,5 +119,28 @@ router.get('/home', (req, res)=>{
     res.render('index.ejs', {title: "Cube Courses"});
   }
 });
-  
+
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
 module.exports = router;
