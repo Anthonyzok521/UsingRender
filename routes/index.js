@@ -23,15 +23,6 @@ xmlhttp.onreadystatechange = () => {
     console.log(result);
 }
 
-// Creando Base de datos en memoria 
-const db = new sqlite3.Database(':memory:', (err) => {
-  if (err) {
-      return console.error(err.message);
-  }
-  console.log('Ready!');
-  db.run(create_table);
-});
-
 /* GET home page. */
 router.get('/', (req, res)=>{
   res.render('index', { title: 'Cube Courses' });
@@ -127,8 +118,5 @@ router.get('/home', (req, res)=>{
     res.render('index.ejs', {title: "Cube Courses"});
   }
 });
-
-xmlhttp.open('GET', url, true);
-xmlhttp.send();
   
 module.exports = router;
