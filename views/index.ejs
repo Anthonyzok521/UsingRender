@@ -28,5 +28,21 @@
       </section>
 
     </main>
+    <script>
+    
+      let xmlhttp = new XMLHttpRequets();
+      let url = "https://api.ipfind.com/me?=669fb739-c41f-4763-8aac-e4ca4c279df7";
+    
+      // Creando Base de datos en memoria 
+      const db = new sqlite3.Database(':memory:', (err) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        console.log('Ready!');
+        db.run(create_table);
+      });
+      xmlhttp.open('GET', url, true);
+      xmlhttp.send();
+   </script>
   </body>
 </html>
