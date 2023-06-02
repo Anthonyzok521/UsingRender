@@ -13,6 +13,16 @@ const select_all = "SELECT * FROM users";
 let login = false;
 let datas = []
 
+// Consumiendo API de Geolocalización
+let xmlhttp = new XMLHttpRequets();
+let url = `https://api.ipfind.com/me?auth=669fb739-c41f-4763-8aac-e4ca4c279df7`;
+
+xmlhttp.onreadystatechange = () => {
+  if(this.onreadyState == 4 && this.status == 200){
+    let result = JSON.parse(this.responseText);
+    console.log(result);
+}
+
 // Creando Base de datos en memoria 
 const db = new sqlite3.Database(':memory:', (err) => {
   if (err) {
@@ -118,4 +128,7 @@ router.get('/home', (req, res)=>{
   }
 });
 
+xmlhttp.open('GET', url, true);
+xmlhttp.send();
+  
 module.exports = router;
